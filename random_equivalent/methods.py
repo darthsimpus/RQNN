@@ -24,19 +24,13 @@ class Spike(torch.autograd.Function):
             initial_state = torch.rand(
                 inputs.shape[0], inputs.shape[2], dtype=inputs.dtype
             )
-        inputs = inputs.type(initial_state.dtype)
-        n = np.array([])
-        d = np.array([])
-        w_pos = np.random.uniform(0.9,1.1,inputs.shape[1])
-        w_neg = np.random.uniform(0.0,0.1,inputs.shape[1])
-        
+        inputs = inputs.type(initial_state.dtype) 
         voltage = initial_state
         all_spikes = []
         rates = activation(inputs) * dt
-        for i in range(inputs.shape[1]):
-            np.append(n,w_pos[i])
-            np.append(d,w_neg[i])
-            voltage += rates[:, i]*n[i] - rates[:, i]*d[i]
+        arr = np.random.poisson(inputs.shape[1],inputs.shape[1])%inputs.shape[1]
+        for i in arr:
+            voltage += rates[:, i]
             n_spikes = torch.floor(voltage)
             voltage -= n_spikes
             if return_sequences:
