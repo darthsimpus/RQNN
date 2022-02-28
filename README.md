@@ -16,6 +16,6 @@ Dataset summary:
 
 | Dataset | #Classes | #Training & Validation Size  | #Testing Size  |
 | :-: | :-: | :-: | :-: |
-| MNIST | 4 | 832 | 7,195 |
-| Fashion-MNIST | 4 | 832 | 7,200 |
-| K-MNIST | 4 | 832 | 5,634 |
+| MNIST | 4 | 954 | 7,073 |
+| Fashion-MNIST | 4 | 954 | 7,172 |
+| K-MNIST | 4 | 954 | 5,512 |
